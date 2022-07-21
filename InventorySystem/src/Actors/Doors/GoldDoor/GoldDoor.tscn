@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Actors/Doors/GoldDoor/GoldDoor.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 24 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 22 )
+
+[node name="GoldDoor" type="StaticBody2D"]
+script = ExtResource( 1 )
+
+[node name="GoldDoor" type="Area2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="GoldDoor"]
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 24, 24 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoldDoor"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="GoldDoor" to="." method="_on_GoldDoor_body_entered"]
